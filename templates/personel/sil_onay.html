@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Personel Sil - Görev Takip Sistemi{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Personel Sil</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a href="{% url 'personel_listesi' %}" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Geri Dön
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <i class="bi bi-exclamation-triangle"></i> Silme Onayı
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Bu personeli silmek istediğinizden emin misiniz?</h5>
+                
+                <div class="alert alert-info">
+                    <strong>Personel Bilgileri:</strong><br>
+                    <strong>Ad Soyad:</strong> {{ personel.adsoyad }}<br>
+                    <strong>Kullanıcı Adı:</strong> {{ personel.kullaniciadi }}<br>
+                    <strong>E-posta:</strong> {{ personel.email|default:"-" }}<br>
+                    <strong>Yönetici:</strong> {% if personel.yonetici %}Evet{% else %}Hayır{% endif %}
+                </div>
+                
+                {% if has_related_records %}
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle"></i> <strong>Uyarı!</strong><br>
+                    Bu personelin ilişkili kayıtları bulunmaktadır:
+                    <ul class="mb-0 mt-2">
+                        {% if gorev_count > 0 %}
+                        <li><strong>{{ gorev_count }}</strong> görev kaydı</li>
+                        {% endif %}
+                        {% if mesai_count > 0 %}
+                        <li><strong>{{ mesai_count }}</strong> mesai kaydı</li>
+                        {% endif %}
+                        {% if izin_count > 0 %}
+                        <li><strong>{{ izin_count }}</strong> izin kaydı</li>
+                        {% endif %}
+                    </ul>
+                    <p class="mt-2 mb-0">
+                        İlişkili kayıtları olan personel silinemez. Onaylarsanız, personel <strong>devre dışı bırakılacak</strong> 
+                        ve sisteme giriş yapamayacaktır.
+                    </p>
+                </div>
+                {% else %}
+                <div class="alert alert-success">
+                    <i class="bi bi-check-circle"></i> Bu personelin ilişkili kaydı bulunmamaktadır. 
+                    Güvenle silebilirsiniz.
+                </div>
+                {% endif %}
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                        <a href="{% url 'personel_listesi' %}" class="btn btn-secondary">
+                            <i class="bi bi-x-circle"></i> İptal
+                        </a>
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-trash"></i> 
+                            {% if has_related_records %}
+                                Devre Dışı Bırak
+                            {% else %}
+                                Sil
+                            {% endif %}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

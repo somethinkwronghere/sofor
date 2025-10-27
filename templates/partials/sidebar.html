@@ -1,0 +1,194 @@
+{% load static %}
+<nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+            <!-- Anasayfa -->
+            <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}" href="{% url 'dashboard' %}">
+                    <i class="bi bi-house-door"></i>
+                    Anasayfa
+                </a>
+            </li>
+            
+            <li class="nav-divider"></li>
+            
+            <!-- Görev Menüsü -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-toggle="collapse" href="#gorevMenu" role="button" aria-expanded="false" aria-controls="gorevMenu">
+                    <i class="bi bi-clipboard-check"></i>
+                    Görev
+                    <i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <div class="collapse {% if 'gorev' in request.path %}show{% endif %}" id="gorevMenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'gorev_taslak' %}active{% endif %}" href="{% url 'gorev_taslak' %}">
+                                <i class="bi bi-file-earmark-text"></i> Görev Taslağı
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'gorev_nihai' %}active{% endif %}" href="{% url 'gorev_nihai' %}">
+                                <i class="bi bi-check2-square"></i> Nihai Liste
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'gorev_ekle' %}active{% endif %}" href="{% url 'gorev_ekle' %}">
+                                <i class="bi bi-plus-circle"></i> Yeni Görev Ekle
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'gecen_ay_gorevler' %}active{% endif %}" href="{% url 'gecen_ay_gorevler' %}">
+                                <i class="bi bi-calendar-month"></i> Geçen Ay
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'eski_gorevler' %}active{% endif %}" href="{% url 'eski_gorevler' %}">
+                                <i class="bi bi-archive"></i> Eski Görevler
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
+            <!-- Mesai & İzin Menüsü -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-toggle="collapse" href="#mesaiIzinMenu" role="button" aria-expanded="false" aria-controls="mesaiIzinMenu">
+                    <i class="bi bi-clock-history"></i>
+                    Mesai & İzin
+                    <i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <div class="collapse {% if 'mesai' in request.path or 'izin' in request.path %}show{% endif %}" id="mesaiIzinMenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'mesai_listesi' %}active{% endif %}" href="{% url 'mesai_listesi' %}">
+                                <i class="bi bi-clock"></i> Mesai Listesi
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'mesai_ekle' %}active{% endif %}" href="{% url 'mesai_ekle' %}">
+                                <i class="bi bi-plus-circle"></i> Mesai Ekle
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'izin_listesi' %}active{% endif %}" href="{% url 'izin_listesi' %}">
+                                <i class="bi bi-calendar-x"></i> İzin Listesi
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'izin_ekle' %}active{% endif %}" href="{% url 'izin_ekle' %}">
+                                <i class="bi bi-plus-circle"></i> İzin Ekle
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
+            <!-- Görevlendirme -->
+            <li class="nav-item">
+                <a class="nav-link {% if 'gorevlendirme' in request.path %}active{% endif %}" href="{% url 'gorevlendirme_listesi' %}">
+                    <i class="bi bi-person-badge"></i>
+                    Görevlendirme
+                </a>
+            </li>
+            
+            <!-- Malzeme -->
+            <li class="nav-item">
+                <a class="nav-link {% if 'malzeme' in request.path %}active{% endif %}" href="{% url 'malzeme_listesi' %}">
+                    <i class="bi bi-box-seam"></i>
+                    Malzeme
+                </a>
+            </li>
+            
+            <!-- Görev Yeri -->
+            <li class="nav-item">
+                <a class="nav-link {% if 'gorev-yeri' in request.path %}active{% endif %}" href="{% url 'gorev_yeri_listesi' %}">
+                    <i class="bi bi-geo-alt"></i>
+                    Görev Yeri
+                </a>
+            </li>
+            
+            <!-- Araç -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-toggle="collapse" href="#aracMenu" role="button" aria-expanded="false" aria-controls="aracMenu">
+                    <i class="bi bi-truck"></i>
+                    Araç
+                    <i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <div class="collapse {% if 'arac' in request.path %}show{% endif %}" id="aracMenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'arac_listesi' %}active{% endif %}" href="{% url 'arac_listesi' %}">
+                                <i class="bi bi-list-ul"></i> Araç Listesi
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'arac_ekle' %}active{% endif %}" href="{% url 'arac_ekle' %}">
+                                <i class="bi bi-plus-circle"></i> Yeni Araç Ekle
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'arac_arsiv' %}active{% endif %}" href="{% url 'arac_arsiv' %}">
+                                <i class="bi bi-archive"></i> Arşiv
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
+            {% if user.yonetici %}
+            <li class="nav-divider"></li>
+            
+            <!-- Personel İşlemleri (Sadece Yönetici) -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-toggle="collapse" href="#personelMenu" role="button" aria-expanded="false" aria-controls="personelMenu">
+                    <i class="bi bi-people"></i>
+                    Personel İşlemleri
+                    <i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <div class="collapse {% if 'personel' in request.path %}show{% endif %}" id="personelMenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'personel_listesi' %}active{% endif %}" href="{% url 'personel_listesi' %}">
+                                <i class="bi bi-list-ul"></i> Personel Listesi
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'personel_ekle' %}active{% endif %}" href="{% url 'personel_ekle' %}">
+                                <i class="bi bi-plus-circle"></i> Yeni Personel Ekle
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
+            <!-- Sistem Ayarları (Sadece Yönetici) -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-toggle="collapse" href="#sistemMenu" role="button" aria-expanded="false" aria-controls="sistemMenu">
+                    <i class="bi bi-gear"></i>
+                    Sistem Ayarları
+                    <i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <div class="collapse {% if 'log' in request.path or 'sistem' in request.path or 'yedek' in request.path %}show{% endif %}" id="sistemMenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'log_kayitlari' %}active{% endif %}" href="{% url 'log_kayitlari' %}">
+                                <i class="bi bi-journal-text"></i> Log Kayıtları
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'sistem_bilgileri' %}active{% endif %}" href="{% url 'sistem_bilgileri' %}">
+                                <i class="bi bi-info-circle"></i> Sistem Bilgileri
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'yedek_al' %}active{% endif %}" href="{% url 'yedek_al' %}">
+                                <i class="bi bi-download"></i> Yedek Al
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

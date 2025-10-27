@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block title %}Görevlendirme Listesi - Görev Takip Sistemi{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Görevlendirme Listesi</h1>
+    {% if user.yonetici %}
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a href="{% url 'gorevlendirme_ekle' %}" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Yeni Görevlendirme Ekle
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Search and Filter Form -->
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-3">
+                <input type="text" name="q" class="form-control" placeholder="Ara..." value="{{ search_query }}">
+            </div>
+            <div class="col-md-3">
+                <select name="personel" class="form-select">
+                    <option value="">Tüm Personel</option>
+                    {% for personel in personeller %}
+                    <option value="{{ personel.id }}" {% if personel_filter == personel.id|stringformat:"s" %}selected{% endif %}>
+                        {{ personel.adsoyad }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input type="date" name="baslangic_tarih" class="form-control" placeholder="Başlangıç" value="{{ baslangic_tarih }}">
+            </div>
+            <div class="col-md-2">
+                <input type="date" name="bitis_tarih" class="form-control" placeholder="Bitiş" value="{{ bitis_tarih }}">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-secondary w-100">Filtrele</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Görevlendirme Table -->
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Personel</th>
+                <th>Başlangıç Tarihi</th>
+                <th>Bitiş Tarihi</th>
+                <th>Araç</th>
+                <th>Görev</th>
+                {% if user.yonetici %}
+                <th>İşlemler</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for gorevlendirme in gorevlendirmeler %}
+            <tr>
+                <td>{{ gorevlendirme.sofor.adsoyad }}</td>
+                <td>{{ gorevlendirme.bstarih|date:"d.m.Y H:i" }}</td>
+                <td>{{ gorevlendirme.bttarih|date:"d.m.Y H:i" }}</td>
+                <td>{{ gorevlendirme.arac.plaka|default:"-" }}</td>
+                <td>{{ gorevlendirme.gorev|truncatewords:10 }}</td>
+                {% if user.yonetici %}
+                <td>
+                    <a href="{% url 'gorevlendirme_duzenle' gorevlendirme.id %}" class="btn btn-sm btn-warning">Düzenle</a>
+                    <a href="{% url 'gorevlendirme_sil' gorevlendirme.id %}" class="btn btn-sm btn-danger">Sil</a>
+                </td>
+                {% endif %}
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="{% if user.yonetici %}6{% else %}5{% endif %}" class="text-center">Görevlendirme kaydı bulunamadı.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Pagination -->
+{% if gorevlendirmeler.has_other_pages %}
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        {% if gorevlendirmeler.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ gorevlendirmeler.previous_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}{% if personel_filter %}&personel={{ personel_filter }}{% endif %}">Önceki</a>
+        </li>
+        {% endif %}
+        
+        <li class="page-item active">
+            <span class="page-link">{{ gorevlendirmeler.number }} / {{ gorevlendirmeler.paginator.num_pages }}</span>
+        </li>
+        
+        {% if gorevlendirmeler.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ gorevlendirmeler.next_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}{% if personel_filter %}&personel={{ personel_filter }}{% endif %}">Sonraki</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+{% endblock %}

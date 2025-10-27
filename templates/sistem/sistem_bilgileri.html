@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block title %}Sistem Bilgileri - Görev Takip Sistemi{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Sistem Bilgileri</h1>
+</div>
+
+<div class="row">
+    <!-- Sistem Versiyonları -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="bi bi-info-circle"></i> Sistem Versiyonları</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <th width="40%">Django Versiyonu:</th>
+                            <td><span class="badge bg-success">{{ django_version }}</span></td>
+                        </tr>
+                        <tr>
+                            <th>Python Versiyonu:</th>
+                            <td><code>{{ python_version|truncatewords:3 }}</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Veritabanı Bilgileri -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0"><i class="bi bi-database"></i> Veritabanı Bilgileri</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <th width="40%">Veritabanı Tipi:</th>
+                            <td><span class="badge bg-info">SQLite 3</span></td>
+                        </tr>
+                        <tr>
+                            <th>Dosya Boyutu:</th>
+                            <td><strong>{{ db_size }}</strong></td>
+                        </tr>
+                        <tr>
+                            <th>Dosya Yolu:</th>
+                            <td><small><code>{{ db_path }}</code></small></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Kayıt Sayıları -->
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="bi bi-bar-chart"></i> Toplam Kayıt Sayıları</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for key, value in record_counts.items %}
+                        <div class="col-md-3 mb-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h6 class="card-title text-muted">{{ key }}</h6>
+                                    <h2 class="card-text text-primary">{{ value }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Aktif Kayıtlar -->
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0"><i class="bi bi-check-circle"></i> Aktif Kayıtlar</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        {% for key, value in active_counts.items %}
+                            <tr>
+                                <th width="60%">{{ key }}:</th>
+                                <td><span class="badge bg-success">{{ value }}</span></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Son Aktivite -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0"><i class="bi bi-clock-history"></i> Son Aktivite (24 Saat)</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        {% for key, value in recent_activity.items %}
+                            <tr>
+                                <th width="60%">{{ key }}:</th>
+                                <td><span class="badge bg-primary">{{ value }}</span></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hızlı Erişim -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-tools"></i> Sistem Yönetimi</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2 d-md-flex">
+                    <a href="{% url 'log_kayitlari' %}" class="btn btn-primary">
+                        <i class="bi bi-journal-text"></i> Log Kayıtlarını Görüntüle
+                    </a>
+                    <a href="{% url 'yedek_al' %}" class="btn btn-success">
+                        <i class="bi bi-download"></i> Veritabanı Yedeği Al
+                    </a>
+                    <a href="{% url 'dashboard' %}" class="btn btn-secondary">
+                        <i class="bi bi-house"></i> Anasayfaya Dön
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

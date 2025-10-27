@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Anasayfa - Görev Takip Sistemi{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Anasayfa</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <span class="text-muted">{{ user.adsoyad }}</span>
+        </div>
+    </div>
+</div>
+
+<!-- Statistics Cards (Requirement 12.1) -->
+{% if user.yonetici %}
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title">Toplam Görev</h5>
+                        <h2 class="mb-0">{{ total_gorev }}</h2>
+                    </div>
+                    <div>
+                        <i class="bi bi-clipboard-check" style="font-size: 3rem; opacity: 0.5;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title">Aktif Personel</h5>
+                        <h2 class="mb-0">{{ total_personel }}</h2>
+                    </div>
+                    <div>
+                        <i class="bi bi-people" style="font-size: 3rem; opacity: 0.5;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title">Toplam Araç</h5>
+                        <h2 class="mb-0">{{ total_arac }}</h2>
+                    </div>
+                    <div>
+                        <i class="bi bi-truck" style="font-size: 3rem; opacity: 0.5;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Vehicle Warnings (Requirement 12.3) -->
+{% if user.yonetici and arac_uyarilar %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card border-warning">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0"><i class="bi bi-exclamation-triangle"></i> Araç Uyarıları</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    {% for item in arac_uyarilar %}
+                    <div class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">{{ item.arac.plaka }} - {{ item.arac.marka }}</h6>
+                            <small class="text-muted">{{ item.arac.get_kategori_display }}</small>
+                        </div>
+                        <ul class="mb-0 mt-2">
+                            {% for warning in item.warnings %}
+                            <li class="text-danger">{{ warning }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Today's Tasks and Overtime (Requirement 12.4) -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="bi bi-calendar-check"></i> Bugünkü Görevler</h5>
+            </div>
+            <div class="card-body">
+                {% if bugunun_gorevleri %}
+                <div class="list-group">
+                    {% for gorev in bugunun_gorevleri %}
+                    <div class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">{{ gorev.sofor.adsoyad }}</h6>
+                            <small class="text-muted">{{ gorev.bstarih|date:"H:i" }}</small>
+                        </div>
+                        <p class="mb-1"><strong>Görev Yeri:</strong> {{ gorev.yurt.ad }}</p>
+                        <p class="mb-1"><strong>Varış:</strong> {{ gorev.varisyeri }}</p>
+                        {% if gorev.arac %}
+                        <small class="text-muted">Araç: {{ gorev.arac.plaka }}</small>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-muted mb-0">Bugün için görev bulunmamaktadır.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="bi bi-clock-history"></i> Bugünkü Mesailer</h5>
+            </div>
+            <div class="card-body">
+                {% if bugunun_mesaileri %}
+                <div class="list-group">
+                    {% for mesai in bugunun_mesaileri %}
+                    <div class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">{{ mesai.sofor.adsoyad }}</h6>
+                            <small class="text-muted">{{ mesai.mesai }} saat</small>
+                        </div>
+                        <p class="mb-1">{{ mesai.gorev|truncatewords:10 }}</p>
+                        <small class="text-muted">
+                            {{ mesai.bstarih|date:"H:i" }} - {{ mesai.bttarih|date:"H:i" }}
+                            {% if mesai.arac %} | Araç: {{ mesai.arac.plaka }}{% endif %}
+                            {% if mesai.pazargunu %} | <span class="badge bg-warning text-dark">Pazar Günü</span>{% endif %}
+                        </small>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-muted mb-0">Bugün için mesai bulunmamaktadır.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Tasks (Requirement 12.2) -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0"><i class="bi bi-list-task"></i> Son Eklenen Görevler</h5>
+            </div>
+            <div class="card-body">
+                {% if recent_gorevler %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Personel</th>
+                                <th>Görev Yeri</th>
+                                <th>Varış Yeri</th>
+                                <th>Araç</th>
+                                <th>Başlangıç</th>
+                                <th>Bitiş</th>
+                                <th>Yetkili</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for gorev in recent_gorevler %}
+                            <tr>
+                                <td>{{ gorev.sofor.adsoyad }}</td>
+                                <td>{{ gorev.yurt.ad }}</td>
+                                <td>{{ gorev.varisyeri }}</td>
+                                <td>
+                                    {% if gorev.arac %}
+                                        {{ gorev.arac.plaka }}
+                                    {% else %}
+                                        <span class="text-muted">-</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ gorev.bstarih|date:"d.m.Y H:i" }}</td>
+                                <td>
+                                    {% if gorev.bttarih %}
+                                        {{ gorev.bttarih|date:"d.m.Y H:i" }}
+                                    {% else %}
+                                        <span class="text-muted">-</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ gorev.yetkili }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p class="text-muted mb-0">Henüz görev bulunmamaktadır.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

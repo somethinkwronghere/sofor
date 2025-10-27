@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>
+                    <i class="bi bi-truck"></i> {{ title }}
+                </h2>
+                <a href="{% url 'arac_listesi' %}" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Geri Dön
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            <!-- Plaka -->
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.plaka.id_for_label }}" class="form-label">
+                                    {{ form.plaka.label }} <span class="text-danger">*</span>
+                                </label>
+                                {{ form.plaka }}
+                                {% if form.plaka.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.plaka.errors.0 }}
+                                    </div>
+                                {% endif %}
+                                <small class="form-text text-muted">Örnek: 34 ABC 123</small>
+                            </div>
+
+                            <!-- Kategori -->
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.kategori.id_for_label }}" class="form-label">
+                                    {{ form.kategori.label }} <span class="text-danger">*</span>
+                                </label>
+                                {{ form.kategori }}
+                                {% if form.kategori.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.kategori.errors.0 }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Marka -->
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.marka.id_for_label }}" class="form-label">
+                                    {{ form.marka.label }} <span class="text-danger">*</span>
+                                </label>
+                                {{ form.marka }}
+                                {% if form.marka.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.marka.errors.0 }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Yolcu Sayısı -->
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.yolcusayisi.id_for_label }}" class="form-label">
+                                    {{ form.yolcusayisi.label }}
+                                </label>
+                                {{ form.yolcusayisi }}
+                                {% if form.yolcusayisi.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.yolcusayisi.errors.0 }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Zimmet -->
+                        <div class="mb-3">
+                            <label for="{{ form.zimmet.id_for_label }}" class="form-label">
+                                {{ form.zimmet.label }}
+                            </label>
+                            {{ form.zimmet }}
+                            {% if form.zimmet.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ form.zimmet.errors.0 }}
+                                </div>
+                            {% endif %}
+                            <small class="form-text text-muted">Aracın zimmetli olduğu personel</small>
+                        </div>
+
+                        <hr class="my-4">
+                        <h5 class="mb-3">Tarih Bilgileri</h5>
+
+                        <div class="row">
+                            <!-- Muayene Tarihi -->
+                            <div class="col-md-4 mb-3">
+                                <label for="{{ form.muayene.id_for_label }}" class="form-label">
+                                    {{ form.muayene.label }}
+                                </label>
+                                {{ form.muayene }}
+                                {% if form.muayene.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.muayene.errors.0 }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Sigorta Tarihi -->
+                            <div class="col-md-4 mb-3">
+                                <label for="{{ form.sigorta.id_for_label }}" class="form-label">
+                                    {{ form.sigorta.label }}
+                                </label>
+                                {{ form.sigorta }}
+                                {% if form.sigorta.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.sigorta.errors.0 }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Egzoz Muayene Tarihi -->
+                            <div class="col-md-4 mb-3">
+                                <label for="{{ form.egzoz.id_for_label }}" class="form-label">
+                                    {{ form.egzoz.label }}
+                                </label>
+                                {{ form.egzoz }}
+                                {% if form.egzoz.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.egzoz.errors.0 }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+                        <h5 class="mb-3">Diğer Ayarlar</h5>
+
+                        <div class="row">
+                            <!-- Takip -->
+                            <div class="col-md-6 mb-3">
+                                <div class="form-check">
+                                    {{ form.takip }}
+                                    <label class="form-check-label" for="{{ form.takip.id_for_label }}">
+                                        {{ form.takip.label }}
+                                    </label>
+                                </div>
+                                <small class="form-text text-muted">Araç takip sisteminde izlensin mi?</small>
+                            </div>
+
+                            <!-- Gizle (only in edit mode) -->
+                            {% if arac %}
+                            <div class="col-md-6 mb-3">
+                                <div class="form-check">
+                                    {{ form.gizle }}
+                                    <label class="form-check-label" for="{{ form.gizle.id_for_label }}">
+                                        {{ form.gizle.label }}
+                                    </label>
+                                </div>
+                                <small class="form-text text-muted">Görev formlarında görünmesin</small>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'arac_listesi' %}" class="btn btn-secondary">
+                                <i class="bi bi-x-circle"></i> İptal
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-circle"></i> Kaydet
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

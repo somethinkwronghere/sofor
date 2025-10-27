@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Görev Yeri Sil - Görev Takip Sistemi{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Görev Yeri Sil</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                {% if related_gorevler > 0 %}
+                <div class="alert alert-danger">
+                    <h5>Uyarı!</h5>
+                    <p>Bu görev yeri <strong>{{ related_gorevler }}</strong> adet görev kaydı ile ilişkili olduğu için silinemez!</p>
+                    <p>Önce ilişkili görevleri silmeniz veya başka bir görev yerine atamanız gerekmektedir.</p>
+                </div>
+                
+                <div class="d-grid gap-2">
+                    <a href="{% url 'gorev_yeri_listesi' %}" class="btn btn-secondary">Geri Dön</a>
+                    <a href="{% url 'gorev_yeri_detay' gorev_yeri.id %}" class="btn btn-info">İlişkili Görevleri Görüntüle</a>
+                </div>
+                {% else %}
+                <div class="alert alert-warning">
+                    <h5>Uyarı!</h5>
+                    <p>Bu görev yerini silmek istediğinizden emin misiniz?</p>
+                </div>
+                
+                <dl class="row">
+                    <dt class="col-sm-4">Görev Yeri:</dt>
+                    <dd class="col-sm-8">{{ gorev_yeri.ad }}</dd>
+                    
+                    <dt class="col-sm-4">İlişkili Görev:</dt>
+                    <dd class="col-sm-8">{{ related_gorevler }} adet</dd>
+                </dl>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'gorev_yeri_listesi' %}" class="btn btn-secondary">İptal</a>
+                        <button type="submit" class="btn btn-danger">Sil</button>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

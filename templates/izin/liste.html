@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}İzin Listesi{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2><i class="bi bi-calendar-check"></i> İzin Listesi</h2>
+                {% if user.yonetici %}
+                <a href="{% url 'izin_ekle' %}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> Yeni İzin Ekle
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Search and Filter Form -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="get" class="row g-3">
+                        <div class="col-md-3">
+                            <label for="q" class="form-label">Arama</label>
+                            <input type="text" class="form-control" id="q" name="q" 
+                                   value="{{ search_query }}" placeholder="Personel, açıklama...">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="personel" class="form-label">Personel</label>
+                            <select class="form-select" id="personel" name="personel">
+                                <option value="">Tümü</option>
+                                {% for p in personeller %}
+                                <option value="{{ p.id }}" {% if personel_filter == p.id|stringformat:"s" %}selected{% endif %}>
+                                    {{ p.adsoyad }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="izin_turu" class="form-label">İzin Türü</label>
+                            <select class="form-select" id="izin_turu" name="izin_turu">
+                                <option value="">Tümü</option>
+                                {% for key, value in izin_turleri %}
+                                <option value="{{ key }}" {% if izin_turu == key %}selected{% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="baslangic_tarih" class="form-label">Başlangıç</label>
+                            <input type="date" class="form-control" id="baslangic_tarih" 
+                                   name="baslangic_tarih" value="{{ baslangic_tarih }}">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="bitis_tarih" class="form-label">Bitiş</label>
+                            <input type="date" class="form-control" id="bitis_tarih" 
+                                   name="bitis_tarih" value="{{ bitis_tarih }}">
+                        </div>
+                        <div class="col-md-1 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary me-2">
+                                <i class="bi bi-search"></i>
+                            </button>
+                            <a href="{% url 'izin_listesi' %}" class="btn btn-secondary">
+                                <i class="bi bi-x-circle"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Izin List Table -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    {% if izinler %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Personel</th>
+                                    <th>İzin Türü</th>
+                                    <th>Başlangıç</th>
+                                    <th>Bitiş</th>
+                                    <th>Süre</th>
+                                    <th>Açıklama</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for izin in izinler %}
+                                <tr>
+                                    <td>{{ izin.sofor.adsoyad }}</td>
+                                    <td>
+                                        <span class="badge bg-primary">{{ izin.get_izin_display }}</span>
+                                    </td>
+                                    <td>{{ izin.bstarih|date:"d.m.Y" }}</td>
+                                    <td>{{ izin.bttarih|date:"d.m.Y" }}</td>
+                                    <td>
+                                        {% if izin.gun %}
+                                            <span class="badge bg-info">{{ izin.gun }} gün</span>
+                                        {% endif %}
+                                        {% if izin.saat %}
+                                            <span class="badge bg-secondary">{{ izin.saat }} saat</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ izin.aciklama|truncatewords:10|default:"-" }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    {% if izinler.has_other_pages %}
+                    <nav aria-label="Sayfa navigasyonu">
+                        <ul class="pagination justify-content-center">
+                            {% if izinler.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ izinler.previous_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}{% if personel_filter %}&personel={{ personel_filter }}{% endif %}{% if izin_turu %}&izin_turu={{ izin_turu }}{% endif %}{% if baslangic_tarih %}&baslangic_tarih={{ baslangic_tarih }}{% endif %}{% if bitis_tarih %}&bitis_tarih={{ bitis_tarih }}{% endif %}">
+                                    Önceki
+                                </a>
+                            </li>
+                            {% endif %}
+
+                            <li class="page-item active">
+                                <span class="page-link">
+                                    Sayfa {{ izinler.number }} / {{ izinler.paginator.num_pages }}
+                                </span>
+                            </li>
+
+                            {% if izinler.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ izinler.next_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}{% if personel_filter %}&personel={{ personel_filter }}{% endif %}{% if izin_turu %}&izin_turu={{ izin_turu }}{% endif %}{% if baslangic_tarih %}&baslangic_tarih={{ baslangic_tarih }}{% endif %}{% if bitis_tarih %}&bitis_tarih={{ bitis_tarih }}{% endif %}">
+                                    Sonraki
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+
+                    <p class="text-muted text-center mt-3">
+                        Toplam {{ izinler.paginator.count }} izin kaydı bulundu
+                    </p>
+                    {% else %}
+                    <div class="alert alert-info text-center">
+                        <i class="bi bi-info-circle"></i> Henüz izin kaydı bulunmamaktadır.
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

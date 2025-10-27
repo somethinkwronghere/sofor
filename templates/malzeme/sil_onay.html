@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Malzeme Kaydı Sil - Görev Takip Sistemi{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Malzeme Kaydı Sil</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    <h5>Uyarı!</h5>
+                    <p>Bu malzeme kaydını silmek istediğinizden emin misiniz?</p>
+                </div>
+                
+                <dl class="row">
+                    <dt class="col-sm-4">Teslim Alan:</dt>
+                    <dd class="col-sm-8">{{ malzeme.sofor.adsoyad }}</dd>
+                    
+                    <dt class="col-sm-4">Teslim Tarihi:</dt>
+                    <dd class="col-sm-8">{{ malzeme.bstarih|date:"d.m.Y H:i" }}</dd>
+                    
+                    <dt class="col-sm-4">Malzeme:</dt>
+                    <dd class="col-sm-8">{{ malzeme.aciklama }}</dd>
+                </dl>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'malzeme_listesi' %}" class="btn btn-secondary">İptal</a>
+                        <button type="submit" class="btn btn-danger">Sil</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,229 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ personel.adsoyad }} - Personel Detay{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{{ personel.adsoyad }}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <a href="{% url 'personel_duzenle' personel.id %}" class="btn btn-sm btn-outline-primary">
+                <i class="bi bi-pencil"></i> Düzenle
+            </a>
+            <a href="{% url 'personel_sil' personel.id %}" class="btn btn-sm btn-outline-danger">
+                <i class="bi bi-trash"></i> Sil
+            </a>
+        </div>
+        <a href="{% url 'personel_listesi' %}" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Geri Dön
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Personnel Information -->
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="bi bi-person-circle"></i> Personel Bilgileri
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th>Ad Soyad:</th>
+                        <td>{{ personel.adsoyad }}</td>
+                    </tr>
+                    <tr>
+                        <th>Kullanıcı Adı:</th>
+                        <td>{{ personel.kullaniciadi }}</td>
+                    </tr>
+                    <tr>
+                        <th>E-posta:</th>
+                        <td>{{ personel.email|default:"-" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Yönetici:</th>
+                        <td>
+                            {% if personel.yonetici %}
+                                <span class="badge bg-success">Evet</span>
+                            {% else %}
+                                <span class="badge bg-secondary">Hayır</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Durum:</th>
+                        <td>
+                            {% if personel.girisizni %}
+                                <span class="badge bg-danger">Giriş İzni Yok</span>
+                            {% elif not personel.is_active %}
+                                <span class="badge bg-warning">Pasif</span>
+                            {% else %}
+                                <span class="badge bg-success">Aktif</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Kalan İzin:</th>
+                        <td>{{ personel.kalanizin }} gün</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Statistics -->
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-bar-chart"></i> İstatistikler
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-4">
+                        <h4 class="text-primary">{{ toplam_gorev }}</h4>
+                        <small class="text-muted">Görev</small>
+                    </div>
+                    <div class="col-4">
+                        <h4 class="text-success">{{ toplam_mesai }}</h4>
+                        <small class="text-muted">Mesai</small>
+                    </div>
+                    <div class="col-4">
+                        <h4 class="text-info">{{ toplam_izin }}</h4>
+                        <small class="text-muted">İzin</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Related Records -->
+    <div class="col-md-8">
+        <!-- Recent Tasks -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="bi bi-clipboard-check"></i> Son Görevler
+            </div>
+            <div class="card-body">
+                {% if gorevler %}
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th>Tarih</th>
+                                <th>Görev Yeri</th>
+                                <th>Varış Yeri</th>
+                                <th>Araç</th>
+                                <th>Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for gorev in gorevler %}
+                            <tr>
+                                <td>{{ gorev.bstarih|date:"d.m.Y H:i" }}</td>
+                                <td>{{ gorev.yurt.ad }}</td>
+                                <td>{{ gorev.varisyeri }}</td>
+                                <td>{{ gorev.arac.plaka|default:"-" }}</td>
+                                <td>
+                                    {% if gorev.durum == 1 %}
+                                        <span class="badge bg-success">Tamamlandı</span>
+                                    {% else %}
+                                        <span class="badge bg-warning">Taslak</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p class="text-muted mb-0">Görev kaydı bulunamadı.</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Recent Overtime -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="bi bi-clock-history"></i> Son Mesailer
+            </div>
+            <div class="card-body">
+                {% if mesailer %}
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th>Başlangıç</th>
+                                <th>Bitiş</th>
+                                <th>Süre</th>
+                                <th>Araç</th>
+                                <th>Pazar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for mesai in mesailer %}
+                            <tr>
+                                <td>{{ mesai.bstarih|date:"d.m.Y H:i" }}</td>
+                                <td>{{ mesai.bttarih|date:"d.m.Y H:i" }}</td>
+                                <td>{{ mesai.mesai }} saat</td>
+                                <td>{{ mesai.arac.plaka|default:"-" }}</td>
+                                <td>
+                                    {% if mesai.pazargunu %}
+                                        <span class="badge bg-info">Evet</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">Hayır</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p class="text-muted mb-0">Mesai kaydı bulunamadı.</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Recent Leave -->
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-calendar-x"></i> Son İzinler
+            </div>
+            <div class="card-body">
+                {% if izinler %}
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th>Başlangıç</th>
+                                <th>Bitiş</th>
+                                <th>İzin Türü</th>
+                                <th>Süre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for izin in izinler %}
+                            <tr>
+                                <td>{{ izin.bstarih|date:"d.m.Y" }}</td>
+                                <td>{{ izin.bttarih|date:"d.m.Y" }}</td>
+                                <td>{{ izin.get_izin_display }}</td>
+                                <td>
+                                    {% if izin.gun > 0 %}
+                                        {{ izin.gun }} gün
+                                    {% endif %}
+                                    {% if izin.saat > 0 %}
+                                        {{ izin.saat }} saat
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p class="text-muted mb-0">İzin kaydı bulunamadı.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

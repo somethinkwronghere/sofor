@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2><i class="bi bi-calendar-check"></i> {{ title }}</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        
+                        {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                        {% endif %}
+
+                        <div class="mb-3">
+                            <label for="{{ form.sofor.id_for_label }}" class="form-label">
+                                {{ form.sofor.label }} <span class="text-danger">*</span>
+                            </label>
+                            {{ form.sofor }}
+                            {% if form.sofor.errors %}
+                            <div class="text-danger">{{ form.sofor.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.izin.id_for_label }}" class="form-label">
+                                {{ form.izin.label }} <span class="text-danger">*</span>
+                            </label>
+                            {{ form.izin }}
+                            {% if form.izin.errors %}
+                            <div class="text-danger">{{ form.izin.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.bstarih.id_for_label }}" class="form-label">
+                                    {{ form.bstarih.label }} <span class="text-danger">*</span>
+                                </label>
+                                {{ form.bstarih }}
+                                {% if form.bstarih.errors %}
+                                <div class="text-danger">{{ form.bstarih.errors }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.bttarih.id_for_label }}" class="form-label">
+                                    {{ form.bttarih.label }} <span class="text-danger">*</span>
+                                </label>
+                                {{ form.bttarih }}
+                                {% if form.bttarih.errors %}
+                                <div class="text-danger">{{ form.bttarih.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.gun.id_for_label }}" class="form-label">
+                                    {{ form.gun.label }}
+                                </label>
+                                {{ form.gun }}
+                                {% if form.gun.errors %}
+                                <div class="text-danger">{{ form.gun.errors }}</div>
+                                {% endif %}
+                                <small class="form-text text-muted">İzin gün sayısı</small>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.saat.id_for_label }}" class="form-label">
+                                    {{ form.saat.label }}
+                                </label>
+                                {{ form.saat }}
+                                {% if form.saat.errors %}
+                                <div class="text-danger">{{ form.saat.errors }}</div>
+                                {% endif %}
+                                <small class="form-text text-muted">Saatlik izin için</small>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.aciklama.id_for_label }}" class="form-label">
+                                {{ form.aciklama.label }}
+                            </label>
+                            {{ form.aciklama }}
+                            {% if form.aciklama.errors %}
+                            <div class="text-danger">{{ form.aciklama.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'izin_listesi' %}" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Geri
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-circle"></i> Kaydet
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <i class="bi bi-info-circle"></i> Bilgilendirme
+                </div>
+                <div class="card-body">
+                    <h6>İzin Türleri</h6>
+                    <ul class="small">
+                        <li><strong>Yıllık İzin:</strong> Personelin yıllık izin hakkı</li>
+                        <li><strong>Mazeret İzni:</strong> Özel durumlar için</li>
+                        <li><strong>Fazla Mesai İzni:</strong> Mesai karşılığı izin</li>
+                        <li><strong>Saatlik İzin:</strong> Kısa süreli izinler</li>
+                    </ul>
+                    <hr>
+                    <h6>Önemli Notlar</h6>
+                    <ul class="small">
+                        <li>İzin kaydı oluşturulduğunda personelin kalan izin hakkı otomatik güncellenir</li>
+                        <li>Gün veya saat bilgisi girilmelidir</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

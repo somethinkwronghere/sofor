@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}Veritabanı Yedeği Al - Görev Takip Sistemi{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Veritabanı Yedeği Al</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <!-- Bilgilendirme -->
+        <div class="alert alert-info">
+            <h5 class="alert-heading"><i class="bi bi-info-circle"></i> Yedekleme Hakkında</h5>
+            <p>Bu sayfa üzerinden sistemin tüm verilerini içeren SQLite veritabanı dosyasının yedeğini alabilirsiniz.</p>
+            <hr>
+            <p class="mb-0">
+                <strong>Önemli:</strong> Yedekleme işlemi sırasında sistem kullanılabilir durumda kalacaktır. 
+                Yedek dosyası otomatik olarak indirilecektir.
+            </p>
+        </div>
+
+        <!-- Veritabanı Bilgileri -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="bi bi-database"></i> Mevcut Veritabanı Bilgileri</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <th width="30%">Dosya Boyutu:</th>
+                            <td><strong class="text-primary">{{ db_size }}</strong></td>
+                        </tr>
+                        <tr>
+                            <th>Dosya Yolu:</th>
+                            <td><code>{{ db_path }}</code></td>
+                        </tr>
+                        <tr>
+                            <th>Yedek Dosya Adı:</th>
+                            <td><code>gorev_takip_yedek_YYYYMMDD_HHMMSS.sqlite3</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Yedekleme Formu -->
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="bi bi-download"></i> Yedek Oluştur</h5>
+            </div>
+            <div class="card-body">
+                <form method="post" id="backupForm">
+                    {% csrf_token %}
+                    
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle"></i> 
+                        <strong>Dikkat:</strong> Yedekleme işlemi başlatıldığında veritabanı dosyası kopyalanacak ve bilgisayarınıza indirilecektir.
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success btn-lg" id="backupButton">
+                            <i class="bi bi-download"></i> Yedek Al ve İndir
+                        </button>
+                        <a href="{% url 'sistem_bilgileri' %}" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Geri Dön
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Yedekleme İpuçları -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-lightbulb"></i> Yedekleme İpuçları</h5>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Düzenli olarak (örneğin haftada bir) yedek almanız önerilir.</li>
+                    <li>Yedek dosyalarını güvenli bir konumda saklayın.</li>
+                    <li>Önemli işlemlerden önce (örneğin sistem güncellemesi) mutlaka yedek alın.</li>
+                    <li>Yedek dosyalarını farklı ortamlarda (harici disk, bulut depolama) saklamayı düşünün.</li>
+                    <li>Yedek dosyasını geri yüklemek için veritabanı dosyasını değiştirmeniz gerekir.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById('backupForm').addEventListener('submit', function(e) {
+    const button = document.getElementById('backupButton');
+    button.disabled = true;
+    button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Yedek oluşturuluyor...';
+    
+    // Re-enable button after 5 seconds
+    setTimeout(function() {
+        button.disabled = false;
+        button.innerHTML = '<i class="bi bi-download"></i> Yedek Al ve İndir';
+    }, 5000);
+});
+</script>
+{% endblock %}

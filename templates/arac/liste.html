@@ -1,0 +1,207 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Araç Listesi{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2><i class="bi bi-truck"></i> Araç Listesi</h2>
+                <div>
+                    <a href="{% url 'arac_arsiv' %}" class="btn btn-secondary me-2">
+                        <i class="bi bi-archive"></i> Arşiv
+                    </a>
+                    {% if user.yonetici %}
+                    <a href="{% url 'arac_ekle' %}" class="btn btn-primary">
+                        <i class="bi bi-plus-circle"></i> Yeni Araç Ekle
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search and Filter Form -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="get" class="row g-3">
+                        <div class="col-md-4">
+                            <label for="arama" class="form-label">Arama</label>
+                            <input type="text" class="form-control" id="arama" name="arama" 
+                                   value="{{ arama }}" placeholder="Plaka, marka, zimmet...">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="kategori" class="form-label">Kategori</label>
+                            <select class="form-select" id="kategori" name="kategori">
+                                <option value="">Tümü</option>
+                                {% for kod, ad in kategoriler %}
+                                <option value="{{ kod }}" {% if kategori_filter == kod %}selected{% endif %}>
+                                    {{ ad }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-3 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary me-2">
+                                <i class="bi bi-search"></i> Filtrele
+                            </button>
+                            <a href="{% url 'arac_listesi' %}" class="btn btn-secondary">
+                                <i class="bi bi-x-circle"></i> Temizle
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vehicle List Table -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    {% if araclar %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Plaka</th>
+                                    <th>Kategori</th>
+                                    <th>Marka/Model</th>
+                                    <th>Zimmet</th>
+                                    <th>Yolcu Sayısı</th>
+                                    <th>Muayene</th>
+                                    <th>Sigorta</th>
+                                    <th>Egzoz</th>
+                                    <th>Uyarılar</th>
+                                    {% if user.yonetici %}
+                                    <th>İşlemler</th>
+                                    {% endif %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in araclar %}
+                                <tr>
+                                    <td><strong>{{ item.arac.plaka }}</strong></td>
+                                    <td>
+                                        <span class="badge bg-secondary">
+                                            {{ item.arac.get_kategori_display }}
+                                        </span>
+                                    </td>
+                                    <td>{{ item.arac.marka }}</td>
+                                    <td>{{ item.arac.zimmet|default:"-" }}</td>
+                                    <td>{{ item.arac.yolcusayisi|default:"-" }}</td>
+                                    <td>
+                                        {% if item.arac.muayene %}
+                                            {{ item.arac.muayene|date:"d.m.Y" }}
+                                        {% else %}
+                                            <span class="text-muted">-</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if item.arac.sigorta %}
+                                            {{ item.arac.sigorta|date:"d.m.Y" }}
+                                        {% else %}
+                                            <span class="text-muted">-</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if item.arac.egzoz %}
+                                            {{ item.arac.egzoz|date:"d.m.Y" }}
+                                        {% else %}
+                                            <span class="text-muted">-</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if item.warnings.has_warning %}
+                                            <div class="d-flex flex-column gap-1">
+                                                {% if item.warnings.muayene %}
+                                                <span class="badge bg-danger" title="{{ item.warnings.muayene }}">
+                                                    <i class="bi bi-exclamation-triangle"></i> Muayene
+                                                </span>
+                                                {% endif %}
+                                                {% if item.warnings.sigorta %}
+                                                <span class="badge bg-danger" title="{{ item.warnings.sigorta }}">
+                                                    <i class="bi bi-exclamation-triangle"></i> Sigorta
+                                                </span>
+                                                {% endif %}
+                                                {% if item.warnings.egzoz %}
+                                                <span class="badge bg-danger" title="{{ item.warnings.egzoz }}">
+                                                    <i class="bi bi-exclamation-triangle"></i> Egzoz
+                                                </span>
+                                                {% endif %}
+                                            </div>
+                                        {% else %}
+                                            <span class="badge bg-success">
+                                                <i class="bi bi-check-circle"></i> Tamam
+                                            </span>
+                                        {% endif %}
+                                    </td>
+                                    {% if user.yonetici %}
+                                    <td>
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            <a href="{% url 'arac_duzenle' item.arac.id %}" 
+                                               class="btn btn-outline-primary" title="Düzenle">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                            <button type="button" class="btn btn-outline-warning" 
+                                                    onclick="confirmArchive({{ item.arac.id }}, '{{ item.arac.plaka }}')"
+                                                    title="Arşivle">
+                                                <i class="bi bi-archive"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p class="text-muted text-center mt-3">
+                        Toplam {{ araclar|length }} araç bulundu
+                    </p>
+                    {% else %}
+                    <div class="alert alert-info text-center">
+                        <i class="bi bi-info-circle"></i> Henüz araç kaydı bulunmamaktadır.
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Archive Confirmation Modal -->
+<div class="modal fade" id="archiveModal" tabindex="-1" aria-labelledby="archiveModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="archiveModalLabel">Aracı Arşivle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong id="archivePlaka"></strong> plakalı aracı arşivlemek istediğinizden emin misiniz?</p>
+                <p class="text-muted">Arşivlenen araç görev formlarında görünmeyecektir.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                <a href="#" id="confirmArchiveBtn" class="btn btn-warning">Arşivle</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function confirmArchive(aracId, plaka) {
+    document.getElementById('archivePlaka').textContent = plaka;
+    document.getElementById('confirmArchiveBtn').href = '/arac/arsivle/' + aracId + '/';
+    var modal = new bootstrap.Modal(document.getElementById('archiveModal'));
+    modal.show();
+}
+</script>
+{% endblock %}

@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }} - Görev Takip Sistemi{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{{ title }}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a href="{% url 'personel_listesi' %}" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Geri Dön
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    
+                    {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {{ form.non_field_errors }}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.adsoyad.id_for_label }}" class="form-label">{{ form.adsoyad.label }} <span class="text-danger">*</span></label>
+                        {{ form.adsoyad }}
+                        {% if form.adsoyad.errors %}
+                        <div class="text-danger">{{ form.adsoyad.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.kullaniciadi.id_for_label }}" class="form-label">{{ form.kullaniciadi.label }} <span class="text-danger">*</span></label>
+                        {{ form.kullaniciadi }}
+                        {% if form.kullaniciadi.errors %}
+                        <div class="text-danger">{{ form.kullaniciadi.errors }}</div>
+                        {% endif %}
+                        <div class="form-text">Giriş yaparken kullanılacak kullanıcı adı</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.email.id_for_label }}" class="form-label">{{ form.email.label }}</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                        <div class="text-danger">{{ form.email.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    {% if form.sifre %}
+                    <div class="mb-3">
+                        <label for="{{ form.sifre.id_for_label }}" class="form-label">{{ form.sifre.label }} <span class="text-danger">*</span></label>
+                        {{ form.sifre }}
+                        {% if form.sifre.errors %}
+                        <div class="text-danger">{{ form.sifre.errors }}</div>
+                        {% endif %}
+                        <div class="form-text">En az 6 karakter olmalıdır</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.sifre_tekrar.id_for_label }}" class="form-label">{{ form.sifre_tekrar.label }} <span class="text-danger">*</span></label>
+                        {{ form.sifre_tekrar }}
+                        {% if form.sifre_tekrar.errors %}
+                        <div class="text-danger">{{ form.sifre_tekrar.errors }}</div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.kalanizin.id_for_label }}" class="form-label">{{ form.kalanizin.label }}</label>
+                        {{ form.kalanizin }}
+                        {% if form.kalanizin.errors %}
+                        <div class="text-danger">{{ form.kalanizin.errors }}</div>
+                        {% endif %}
+                        <div class="form-text">Personelin kalan yıllık izin günü sayısı</div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <h5 class="mb-3">Yetkiler ve Durum</h5>
+                    
+                    <div class="mb-3 form-check">
+                        {{ form.yonetici }}
+                        <label class="form-check-label" for="{{ form.yonetici.id_for_label }}">
+                            {{ form.yonetici.label }}
+                        </label>
+                        {% if form.yonetici.errors %}
+                        <div class="text-danger">{{ form.yonetici.errors }}</div>
+                        {% endif %}
+                        <div class="form-text">Yönetici tüm modüllere erişim sağlayabilir</div>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        {{ form.is_active }}
+                        <label class="form-check-label" for="{{ form.is_active.id_for_label }}">
+                            {{ form.is_active.label }}
+                        </label>
+                        {% if form.is_active.errors %}
+                        <div class="text-danger">{{ form.is_active.errors }}</div>
+                        {% endif %}
+                        <div class="form-text">Pasif kullanıcılar sisteme giriş yapamaz</div>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        {{ form.girisizni }}
+                        <label class="form-check-label" for="{{ form.girisizni.id_for_label }}">
+                            {{ form.girisizni.label }}
+                        </label>
+                        {% if form.girisizni.errors %}
+                        <div class="text-danger">{{ form.girisizni.errors }}</div>
+                        {% endif %}
+                        <div class="form-text">Giriş izni olmayan kullanıcılar sisteme giriş yapamaz</div>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        {{ form.gg }}
+                        <label class="form-check-label" for="{{ form.gg.id_for_label }}">
+                            {{ form.gg.label }}
+                        </label>
+                        {% if form.gg.errors %}
+                        <div class="text-danger">{{ form.gg.errors }}</div>
+                        {% endif %}
+                        <div class="form-text">Gizli kullanıcılar belirli hassas bilgilere erişemez</div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'personel_listesi' %}" class="btn btn-secondary">İptal</a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-check-circle"></i> Kaydet
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-info-circle"></i> Bilgi
+            </div>
+            <div class="card-body">
+                <h6>Personel Ekleme</h6>
+                <p class="small">Yeni personel eklerken aşağıdaki bilgileri doldurun:</p>
+                <ul class="small">
+                    <li>Ad Soyad (zorunlu)</li>
+                    <li>Kullanıcı Adı (zorunlu, benzersiz)</li>
+                    <li>E-posta (opsiyonel)</li>
+                    <li>Şifre (zorunlu, en az 6 karakter)</li>
+                    <li>Kalan İzin günü sayısı</li>
+                </ul>
+                
+                <hr>
+                
+                <h6>Yetkiler</h6>
+                <p class="small">
+                    <strong>Yönetici:</strong> Tüm modüllere erişim sağlar.<br>
+                    <strong>Aktif:</strong> Kullanıcının sisteme giriş yapabilmesi için gerekli.<br>
+                    <strong>Giriş İzni Yok:</strong> Kullanıcının sisteme girişini engeller.<br>
+                    <strong>Gizli Kullanıcı:</strong> Hassas bilgilere erişimi kısıtlar.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }} - Görev Takip Sistemi{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{{ title }}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a href="{% url 'gorev_taslak' %}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Geri Dön
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    
+                    {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {{ form.non_field_errors }}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="{{ form.sofor.id_for_label }}" class="form-label">
+                                {{ form.sofor.label }} <span class="text-danger">*</span>
+                            </label>
+                            {{ form.sofor }}
+                            {% if form.sofor.errors %}
+                            <div class="text-danger small">{{ form.sofor.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="{{ form.yurt.id_for_label }}" class="form-label">
+                                {{ form.yurt.label }} <span class="text-danger">*</span>
+                            </label>
+                            {{ form.yurt }}
+                            {% if form.yurt.errors %}
+                            <div class="text-danger small">{{ form.yurt.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.varisyeri.id_for_label }}" class="form-label">
+                            {{ form.varisyeri.label }} <span class="text-danger">*</span>
+                        </label>
+                        {{ form.varisyeri }}
+                        {% if form.varisyeri.errors %}
+                        <div class="text-danger small">{{ form.varisyeri.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.arac.id_for_label }}" class="form-label">
+                            {{ form.arac.label }}
+                        </label>
+                        {{ form.arac }}
+                        {% if form.arac.errors %}
+                        <div class="text-danger small">{{ form.arac.errors }}</div>
+                        {% endif %}
+                        <div class="form-text">Araç seçimi opsiyoneldir.</div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="{{ form.bstarih.id_for_label }}" class="form-label">
+                                {{ form.bstarih.label }} <span class="text-danger">*</span>
+                            </label>
+                            {{ form.bstarih }}
+                            {% if form.bstarih.errors %}
+                            <div class="text-danger small">{{ form.bstarih.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="{{ form.bttarih.id_for_label }}" class="form-label">
+                                {{ form.bttarih.label }}
+                            </label>
+                            {{ form.bttarih }}
+                            {% if form.bttarih.errors %}
+                            <div class="text-danger small">{{ form.bttarih.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="{{ form.yetkili.id_for_label }}" class="form-label">
+                                {{ form.yetkili.label }} <span class="text-danger">*</span>
+                            </label>
+                            {{ form.yetkili }}
+                            {% if form.yetkili.errors %}
+                            <div class="text-danger small">{{ form.yetkili.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="{{ form.ilolur.id_for_label }}" class="form-label">
+                                {{ form.ilolur.label }}
+                            </label>
+                            {{ form.ilolur }}
+                            {% if form.ilolur.errors %}
+                            <div class="text-danger small">{{ form.ilolur.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    {% if gorev %}
+                    <div class="mb-3">
+                        <label for="{{ form.durum.id_for_label }}" class="form-label">
+                            {{ form.durum.label }}
+                        </label>
+                        {{ form.durum }}
+                        {% if form.durum.errors %}
+                        <div class="text-danger small">{{ form.durum.errors }}</div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.aciklama.id_for_label }}" class="form-label">
+                            {{ form.aciklama.label }}
+                        </label>
+                        {{ form.aciklama }}
+                        {% if form.aciklama.errors %}
+                        <div class="text-danger small">{{ form.aciklama.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'gorev_taslak' %}" class="btn btn-secondary">İptal</a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-save"></i> Kaydet
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-info-circle"></i> Bilgilendirme
+            </div>
+            <div class="card-body">
+                <h6>Görev Ekleme Kuralları:</h6>
+                <ul class="small">
+                    <li>Personel ve görev yeri seçimi zorunludur.</li>
+                    <li>Varış yeri ve yetkili bilgisi girilmelidir.</li>
+                    <li>Başlangıç tarihi zorunludur.</li>
+                    <li>Bitiş tarihi başlangıç tarihinden önce olamaz.</li>
+                    <li>Araç seçimi opsiyoneldir.</li>
+                    <li>Yeni görevler taslak olarak kaydedilir.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Set current datetime as default for new tasks
+document.addEventListener('DOMContentLoaded', function() {
+    const bstarihInput = document.getElementById('{{ form.bstarih.id_for_label }}');
+    if (bstarihInput && !bstarihInput.value) {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        bstarihInput.value = `${year}-${month}-${day}T${hours}:${minutes}`;
+    }
+});
+</script>
+{% endblock %}

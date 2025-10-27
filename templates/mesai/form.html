@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2><i class="bi bi-clock-history"></i> {{ title }}</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        
+                        {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                        {% endif %}
+
+                        <div class="mb-3">
+                            <label for="{{ form.sofor.id_for_label }}" class="form-label">
+                                {{ form.sofor.label }} <span class="text-danger">*</span>
+                            </label>
+                            {{ form.sofor }}
+                            {% if form.sofor.errors %}
+                            <div class="text-danger">{{ form.sofor.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.bstarih.id_for_label }}" class="form-label">
+                                    {{ form.bstarih.label }} <span class="text-danger">*</span>
+                                </label>
+                                {{ form.bstarih }}
+                                {% if form.bstarih.errors %}
+                                <div class="text-danger">{{ form.bstarih.errors }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.bttarih.id_for_label }}" class="form-label">
+                                    {{ form.bttarih.label }} <span class="text-danger">*</span>
+                                </label>
+                                {{ form.bttarih }}
+                                {% if form.bttarih.errors %}
+                                <div class="text-danger">{{ form.bttarih.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.arac.id_for_label }}" class="form-label">
+                                {{ form.arac.label }}
+                            </label>
+                            {{ form.arac }}
+                            {% if form.arac.errors %}
+                            <div class="text-danger">{{ form.arac.errors }}</div>
+                            {% endif %}
+                            <small class="form-text text-muted">Araç seçimi opsiyoneldir</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.gorev.id_for_label }}" class="form-label">
+                                {{ form.gorev.label }} <span class="text-danger">*</span>
+                            </label>
+                            {{ form.gorev }}
+                            {% if form.gorev.errors %}
+                            <div class="text-danger">{{ form.gorev.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            {{ form.pazargunu }}
+                            <label class="form-check-label" for="{{ form.pazargunu.id_for_label }}">
+                                {{ form.pazargunu.label }}
+                            </label>
+                            {% if form.pazargunu.errors %}
+                            <div class="text-danger">{{ form.pazargunu.errors }}</div>
+                            {% endif %}
+                            <small class="form-text text-muted d-block">
+                                Pazar günü yapılan mesailer otomatik işaretlenir
+                            </small>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'mesai_listesi' %}" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Geri
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-circle"></i> Kaydet
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <i class="bi bi-info-circle"></i> Bilgilendirme
+                </div>
+                <div class="card-body">
+                    <h6>Mesai Kaydı Hakkında</h6>
+                    <ul class="small">
+                        <li>Mesai süresi otomatik olarak hesaplanacaktır</li>
+                        <li>Pazar günü yapılan mesailer otomatik işaretlenir</li>
+                        <li>Araç seçimi zorunlu değildir</li>
+                        <li>Görev açıklaması detaylı olmalıdır</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

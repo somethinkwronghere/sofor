@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mesai Listesi{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2><i class="bi bi-clock-history"></i> Mesai Listesi</h2>
+                {% if user.yonetici %}
+                <a href="{% url 'mesai_ekle' %}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> Yeni Mesai Ekle
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Search and Filter Form -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="get" class="row g-3">
+                        <div class="col-md-3">
+                            <label for="q" class="form-label">Arama</label>
+                            <input type="text" class="form-control" id="q" name="q" 
+                                   value="{{ search_query }}" placeholder="Personel, görev...">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="personel" class="form-label">Personel</label>
+                            <select class="form-select" id="personel" name="personel">
+                                <option value="">Tümü</option>
+                                {% for p in personeller %}
+                                <option value="{{ p.id }}" {% if personel_filter == p.id|stringformat:"s" %}selected{% endif %}>
+                                    {{ p.adsoyad }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="baslangic_tarih" class="form-label">Başlangıç</label>
+                            <input type="date" class="form-control" id="baslangic_tarih" 
+                                   name="baslangic_tarih" value="{{ baslangic_tarih }}">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="bitis_tarih" class="form-label">Bitiş</label>
+                            <input type="date" class="form-control" id="bitis_tarih" 
+                                   name="bitis_tarih" value="{{ bitis_tarih }}">
+                        </div>
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary me-2">
+                                <i class="bi bi-search"></i> Filtrele
+                            </button>
+                            <a href="{% url 'mesai_listesi' %}" class="btn btn-secondary">
+                                <i class="bi bi-x-circle"></i> Temizle
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mesai List Table -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    {% if mesailer %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Personel</th>
+                                    <th>Başlangıç</th>
+                                    <th>Bitiş</th>
+                                    <th>Mesai Süresi</th>
+                                    <th>Araç</th>
+                                    <th>Görev</th>
+                                    <th>Pazar Günü</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for mesai in mesailer %}
+                                <tr>
+                                    <td>{{ mesai.sofor.adsoyad }}</td>
+                                    <td>{{ mesai.bstarih|date:"d.m.Y H:i" }}</td>
+                                    <td>{{ mesai.bttarih|date:"d.m.Y H:i" }}</td>
+                                    <td>
+                                        <span class="badge bg-info">{{ mesai.mesai }} saat</span>
+                                    </td>
+                                    <td>
+                                        {% if mesai.arac %}
+                                            {{ mesai.arac.plaka }}
+                                        {% else %}
+                                            <span class="text-muted">-</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ mesai.gorev|truncatewords:10 }}</td>
+                                    <td>
+                                        {% if mesai.pazargunu %}
+                                            <span class="badge bg-warning">Pazar</span>
+                                        {% else %}
+                                            <span class="text-muted">-</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    {% if mesailer.has_other_pages %}
+                    <nav aria-label="Sayfa navigasyonu">
+                        <ul class="pagination justify-content-center">
+                            {% if mesailer.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ mesailer.previous_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}{% if personel_filter %}&personel={{ personel_filter }}{% endif %}{% if baslangic_tarih %}&baslangic_tarih={{ baslangic_tarih }}{% endif %}{% if bitis_tarih %}&bitis_tarih={{ bitis_tarih }}{% endif %}">
+                                    Önceki
+                                </a>
+                            </li>
+                            {% endif %}
+
+                            <li class="page-item active">
+                                <span class="page-link">
+                                    Sayfa {{ mesailer.number }} / {{ mesailer.paginator.num_pages }}
+                                </span>
+                            </li>
+
+                            {% if mesailer.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ mesailer.next_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}{% if personel_filter %}&personel={{ personel_filter }}{% endif %}{% if baslangic_tarih %}&baslangic_tarih={{ baslangic_tarih }}{% endif %}{% if bitis_tarih %}&bitis_tarih={{ bitis_tarih }}{% endif %}">
+                                    Sonraki
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+
+                    <p class="text-muted text-center mt-3">
+                        Toplam {{ mesailer.paginator.count }} mesai kaydı bulundu
+                    </p>
+                    {% else %}
+                    <div class="alert alert-info text-center">
+                        <i class="bi bi-info-circle"></i> Henüz mesai kaydı bulunmamaktadır.
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

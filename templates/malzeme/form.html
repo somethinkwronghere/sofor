@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }} - Görev Takip Sistemi{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{{ title }}</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.sofor.id_for_label }}" class="form-label">{{ form.sofor.label }}</label>
+                        {{ form.sofor }}
+                        {% if form.sofor.errors %}
+                        <div class="text-danger">{{ form.sofor.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.bstarih.id_for_label }}" class="form-label">{{ form.bstarih.label }}</label>
+                        {{ form.bstarih }}
+                        {% if form.bstarih.errors %}
+                        <div class="text-danger">{{ form.bstarih.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.aciklama.id_for_label }}" class="form-label">{{ form.aciklama.label }}</label>
+                        {{ form.aciklama }}
+                        {% if form.aciklama.errors %}
+                        <div class="text-danger">{{ form.aciklama.errors }}</div>
+                        {% endif %}
+                        <div class="form-text">Teslim edilen malzemelerin detaylı açıklamasını girin.</div>
+                    </div>
+                    
+                    {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {{ form.non_field_errors }}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'malzeme_listesi' %}" class="btn btn-secondary">İptal</a>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
