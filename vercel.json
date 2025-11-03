@@ -2,7 +2,7 @@
   "version": 2,
   "functions": {
     "api/django.py": {
-      "runtime": "python3.11"
+      "runtime": "vercel-python@3.11"
     }
   },
   "buildCommand": "pip install -r requirements.txt && python manage.py collectstatic --noinput",
