@@ -93,7 +93,7 @@ CREATE TABLE `gorev` (
   KEY `varisyeri` (`varisyeri`),
   KEY `bstarih` (`bstarih`),
   KEY `bttarih` (`bttarih`)
-) ENGINE=InnoDB AUTO_INCREMENT=2172 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2181 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('7','2','9','','0','2021-10-17 10:30:00','2021-12-01 00:00:00','Muhlis','','','0','1','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('8','2','2','','1','2021-10-17 18:00:00','2021-12-01 00:00:00','Sule hoca ','','','0','1','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('9','5','7','','0','2021-10-18 12:30:00','2021-12-01 00:00:00','Burcu','','','0','1','0');
@@ -1946,7 +1946,7 @@ INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttar
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2131','17','42','Taraklı','57','2025-10-11 08:45:00','2025-10-11 00:00:00','Gm','','','0','','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2132','13','46','Eskişehir','43','2025-11-01 14:00:00','2025-11-01 00:00:00','Recep Kodalak','','','0','','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2133','5','39','Sapanca Gm','1','2025-10-20 16:45:00','2025-10-20 00:00:00','Gm Macit','','','0','','0');
-INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2134','5','3','Bolu Yedi Göller','1','2025-10-30 08:00:00','2025-10-30 00:00:00','yurt','','','0','','0');
+INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2134','6','3','Bolu Yedi Göller','1','2025-10-30 08:00:00','2025-10-30 00:00:00','Yurt','','','0','','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2135','8','15','Kampus','1','2025-10-09 18:00:00','2025-10-09 00:00:00','Recep Kodalak','','','0','','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2136','4','4','Taraklı','52','2025-10-16 09:00:00','2025-10-16 00:00:00','Yurt','','','0','','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2137','5','4','Bursa','1','2025-10-21 07:45:00','2025-10-21 00:00:00','Yurt','','','0','','0');
@@ -1960,10 +1960,10 @@ INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttar
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2146','8','16','Pamukova','57','2025-10-26 08:30:00','2025-10-26 00:00:00','wushu','','','0','','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2149','101','46','Taraklı','52','2025-10-25 09:15:00','2025-10-25 00:00:00','Recep Kodalak','','','0','','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2150','12','9','İstanbul ','51','2025-10-22 10:00:00','2025-10-22 00:00:00','Gm','','','0','','0');
-INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2151','4','9','İliçii','51','2025-10-30 10:00:00','2025-10-30 00:00:00','Gm','','','0','','0');
+INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2151','4','9','Taraklı-göynük','51','2025-10-30 10:00:00','2025-10-30 00:00:00','Gm','','','0','','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2152','8','12','GEYVE İÇİ-TARAKLI','57','2025-10-22 08:45:00','2025-10-22 00:00:00','Yurt','','','0','','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2153','101','12','GEYVE İÇİ-TARAKLI','52','2025-10-22 08:45:00','2025-10-22 00:00:00','Yurt','','','0','','0');
-INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2154','12','14','GEYVE İÇİ-TARAKLI','51','2025-11-01 09:00:00','2025-11-01 00:00:00','Yurt','','','0','','0');
+INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2154','4','14','GEYVE İÇİ-TARAKLI','51','2025-11-01 09:00:00','2025-11-01 00:00:00','Yurt','','','0','','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2155','4','24','Ramada Otel','52','2025-10-15 16:45:00','2025-10-15 00:00:00','Halter','','','0','','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2156','19','9','Kano Kürek Tesisleri','1','2025-10-22 17:15:00','2025-10-22 00:00:00','Gm','','','0','','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2157','13','16','Kefken Kamp Alanı','43','2025-10-31 17:15:00','2025-11-03 00:00:00','GÜLAY  ','','','0','','0');
@@ -1980,6 +1980,15 @@ INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttar
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2169','13','20','Bakacak Kampı','43','2025-10-27 09:00:00','2025-10-27 00:00:00','Gm Gözde','','','0','','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2170','4','42','Eskişehir','51','2025-10-25 07:45:00','2025-10-25 00:00:00','Gm','','','0','','0');
 INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2171','101','7','Taraklı','57','2025-10-23 09:00:00','2025-10-23 00:00:00','Yurt','','','0','','0');
+INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2172','13','46','Macera Park','43','2025-11-18 09:15:00','2025-11-18 00:00:00','Recep Kodalak','','','0','','0');
+INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2173','8','11','Erenler Gm  ','57','2025-10-31 15:00:00','2025-10-31 00:00:00','Frmz Bey','','','0','','0');
+INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2174','101','9','Karakamış Ilkolu ','52','2025-10-31 09:00:00','2025-10-31 00:00:00','Hasret','','','0','','0');
+INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2175','8','5','Bolu Yedi Göller','57','2025-11-05 08:00:00','2025-11-05 00:00:00','Yurt','','','0','','0');
+INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2176','101','12','İstanbul ','52','2025-11-12 07:00:00','2025-11-12 00:00:00','Yurt','','','0','','0');
+INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2177','4','4','Bolu Yedi Göller','51','2025-11-05 07:30:00','2025-11-05 00:00:00','Yurt','','','0','','0');
+INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2178','13','10','Çanakkale','43','2025-12-05 01:15:00','2025-12-07 00:00:00','Gm','','','0','','0');
+INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2179','13','20','Stad Lazertek','57','2025-11-07 14:30:00','2025-11-07 00:00:00','Gm','','','0','','0');
+INSERT INTO gorev (`id`,`soforid`,`yurtid`,`varisyeri`,`aracid`,`bstarih`,`bttarih`,`yetkili`,`ilolur`,`aciklama`,`gizle`,`durum`,`aktarildi`) VALUES ('2180','13','20','Stad Lazertek','57','2025-11-11 15:30:00','2025-11-11 00:00:00','Gm','','','0','','0');
 CREATE TABLE `gorevlendirmeler` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `soforid` int(11) NOT NULL,
@@ -1988,7 +1997,7 @@ CREATE TABLE `gorevlendirmeler` (
   `aracid` int(22) NOT NULL,
   `gorev` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=170 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci COMMENT='Görevlendirmelerin bulunduğu tablo';
+) ENGINE=InnoDB AUTO_INCREMENT=172 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci COMMENT='Görevlendirmelerin bulunduğu tablo';
 INSERT INTO gorevlendirmeler (`id`,`soforid`,`bstarih`,`bttarih`,`aracid`,`gorev`) VALUES ('1','13','2023-01-11 08:30:00','2023-01-11 14:30:00','11','Gebze');
 INSERT INTO gorevlendirmeler (`id`,`soforid`,`bstarih`,`bttarih`,`aracid`,`gorev`) VALUES ('5','14','2023-01-13 07:00:00','2023-01-13 14:30:00','7','kürek teknelerinin alınması ve havuz robotunun tamire bırakılması');
 INSERT INTO gorevlendirmeler (`id`,`soforid`,`bstarih`,`bttarih`,`aracid`,`gorev`) VALUES ('7','15','2023-01-19 08:30:00','2023-01-20 22:30:00','34','İstanbul');
@@ -2140,6 +2149,8 @@ INSERT INTO gorevlendirmeler (`id`,`soforid`,`bstarih`,`bttarih`,`aracid`,`gorev
 INSERT INTO gorevlendirmeler (`id`,`soforid`,`bstarih`,`bttarih`,`aracid`,`gorev`) VALUES ('167','13','2025-10-08 04:00:00','2025-10-09 23:45:00','43','PAMUKOVA GM Çanakkale ');
 INSERT INTO gorevlendirmeler (`id`,`soforid`,`bstarih`,`bttarih`,`aracid`,`gorev`) VALUES ('168','13','2025-10-21 04:00:00','2025-10-22 22:00:00','43','Hendek GM Çanakkale ');
 INSERT INTO gorevlendirmeler (`id`,`soforid`,`bstarih`,`bttarih`,`aracid`,`gorev`) VALUES ('169','13','2025-10-24 07:00:00','2025-10-24 21:00:00','43','Sapanca GM Eskişehir ');
+INSERT INTO gorevlendirmeler (`id`,`soforid`,`bstarih`,`bttarih`,`aracid`,`gorev`) VALUES ('170','13','2025-10-28 04:00:00','2025-10-29 21:30:00','43','Adapazarı g.m Çanakkale ');
+INSERT INTO gorevlendirmeler (`id`,`soforid`,`bstarih`,`bttarih`,`aracid`,`gorev`) VALUES ('171','13','2025-11-01 07:30:00','2025-11-01 21:30:00','43','AKYAZI GM Eskişehir ');
 CREATE TABLE `izin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `soforid` int(11) NOT NULL,
@@ -2151,7 +2162,7 @@ CREATE TABLE `izin` (
   `saat` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `soforid` (`soforid`)
-) ENGINE=InnoDB AUTO_INCREMENT=262 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=263 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 INSERT INTO izin (`id`,`soforid`,`bstarih`,`bttarih`,`izin`,`aciklama`,`gun`,`saat`) VALUES ('11','1','2023-01-05','2023-01-06','2','','1','0');
 INSERT INTO izin (`id`,`soforid`,`bstarih`,`bttarih`,`izin`,`aciklama`,`gun`,`saat`) VALUES ('12','5','2023-01-06','2023-01-06','4','','0','1');
 INSERT INTO izin (`id`,`soforid`,`bstarih`,`bttarih`,`izin`,`aciklama`,`gun`,`saat`) VALUES ('13','13','2023-01-13','2023-01-13','1','','1','0');
@@ -2390,6 +2401,7 @@ INSERT INTO izin (`id`,`soforid`,`bstarih`,`bttarih`,`izin`,`aciklama`,`gun`,`sa
 INSERT INTO izin (`id`,`soforid`,`bstarih`,`bttarih`,`izin`,`aciklama`,`gun`,`saat`) VALUES ('259','2','2025-09-17','2025-09-19','3','Fazla mesai izni','1','0');
 INSERT INTO izin (`id`,`soforid`,`bstarih`,`bttarih`,`izin`,`aciklama`,`gun`,`saat`) VALUES ('260','2','2025-09-23','2025-09-25','3','Fazla mesai izni','1','0');
 INSERT INTO izin (`id`,`soforid`,`bstarih`,`bttarih`,`izin`,`aciklama`,`gun`,`saat`) VALUES ('261','2','2025-10-16','2025-10-16','4','Fazla mesai izni (dişçi)','0','1');
+INSERT INTO izin (`id`,`soforid`,`bstarih`,`bttarih`,`izin`,`aciklama`,`gun`,`saat`) VALUES ('262','17','2025-11-03','2025-11-07','5','Fazla mesai izni','1','0');
 CREATE TABLE `log` (
   `id` bigint(255) NOT NULL AUTO_INCREMENT,
   `soforid` int(11) NOT NULL,
@@ -2397,7 +2409,7 @@ CREATE TABLE `log` (
   `tarih` datetime NOT NULL,
   `ip` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6914 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7011 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('30','6','Yaşar Yazıcı adlı personele izin eklendi!','2023-01-30 10:23:19','88.255.171.82');
 INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('123','1','Emre Çetinbaş adlı personele izin eklendi!','2023-02-05 23:11:35','88.230.169.214');
 INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('181','2','Yusuf Başaran <a href=\"mesaiduzenle.php?mesai=43&soforid=2\">43</a> nolu mesaisini güncelledi!','2023-02-14 13:16:29','31.143.7.213');
@@ -2523,84 +2535,101 @@ INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6634','11','Murat
 INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6635','11','Murat Gül İhsan Bıldırcın\'ın giriş yetkilerini <b>giriş yapamaz</b> olarak değiştirdi! ','2025-09-29 12:34:41','88.255.171.86');
 INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6636','11','Murat Gül Selçuk Kayalak\'ın giriş yetkilerini <b>giriş yapamaz</b> olarak değiştirdi! ','2025-09-29 12:35:19','88.255.171.86');
 INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6638','11','Murat Gül ZekiUlutaş\'ın giriş yetkilerini <b>giriş yapabilir</b> olarak değiştirdi! ','2025-09-29 12:40:44','88.255.171.86');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6836','101','Mobil üzerinden çıkış yaptı','2025-10-20 14:13:35','46.104.28.54');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6837','101','Mobil üzerinden giriş yaptı','2025-10-20 14:13:41','46.104.28.54');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6838','6','Mobil üzerinden giriş yaptı','2025-10-20 14:16:41','46.104.3.85');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6839','6','Pc üzerinden giriş yaptı','2025-10-20 14:51:01','88.255.171.84');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6840','6','Pc üzerinden giriş yaptı','2025-10-20 14:51:30','88.255.171.84');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6841','12','Mobil üzerinden giriş yaptı','2025-10-20 15:13:00','178.246.240.142');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6842','5','Pc üzerinden giriş yaptı','2025-10-20 15:16:26','151.135.16.29');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6843','11','Pc üzerinden giriş yaptı','2025-10-20 15:37:47','88.255.171.83');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6844','11','Pc üzerinden giriş yaptı','2025-10-20 15:37:48','88.255.171.83');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6845','13','Mobil üzerinden giriş yaptı','2025-10-20 15:42:36','46.104.10.147');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6846','8','Mobil üzerinden giriş yaptı','2025-10-20 15:47:56','31.143.25.8');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6847','8','Mobil üzerinden giriş yaptı','2025-10-20 15:47:56','31.143.25.8');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6848','8','Mobil üzerinden giriş yaptı','2025-10-20 19:34:07','88.230.87.183');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6849','8','Mobil üzerinden giriş yaptı','2025-10-20 19:34:08','88.230.87.183');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6850','17','Mobil üzerinden giriş yaptı','2025-10-20 21:25:52','5.47.135.212');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6851','5','Pc üzerinden giriş yaptı','2025-10-20 22:50:28','151.135.16.29');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6852','101','Mobil üzerinden giriş yaptı','2025-10-21 08:20:09','151.135.8.232');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6853','6','Pc üzerinden giriş yaptı','2025-10-21 08:43:04','88.255.171.84');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6854','8','Mobil üzerinden giriş yaptı','2025-10-21 08:58:33','31.143.25.8');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6855','8','Mobil üzerinden giriş yaptı','2025-10-21 08:58:33','31.143.25.8');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6856','13','Mobil üzerinden giriş yaptı','2025-10-21 08:59:28','151.135.75.204');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6857','6','Pc üzerinden giriş yaptı','2025-10-21 09:17:13','88.255.171.86');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6858','8','Mobil üzerinden giriş yaptı','2025-10-21 11:50:39','31.143.25.8');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6859','8','Mobil üzerinden giriş yaptı','2025-10-21 11:50:40','31.143.25.8');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6860','6','Mobil üzerinden giriş yaptı','2025-10-21 13:56:57','151.135.4.212');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6861','5','Pc üzerinden giriş yaptı','2025-10-21 21:06:45','151.135.16.29');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6862','101','Mobil üzerinden giriş yaptı','2025-10-22 07:48:34','5.47.145.73');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6863','101','Mobil üzerinden giriş yaptı','2025-10-22 07:48:35','5.47.145.73');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6864','8','Mobil üzerinden giriş yaptı','2025-10-22 11:30:37','31.143.25.8');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6865','8','Mobil üzerinden giriş yaptı','2025-10-22 11:30:38','31.143.25.8');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6866','101','Mobil üzerinden giriş yaptı','2025-10-22 11:30:45','5.47.145.73');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6867','5','Pc üzerinden giriş yaptı','2025-10-22 13:06:32','151.135.16.29');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6868','13','Mobil üzerinden giriş yaptı','2025-10-22 13:28:43','94.235.112.70');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6869','6','Pc üzerinden giriş yaptı','2025-10-22 14:52:12','88.255.171.86');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6870','11','Mobil üzerinden giriş yaptı','2025-10-22 18:37:14','95.65.188.75');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6871','11','Mobil üzerinden giriş yaptı','2025-10-22 18:37:15','95.65.188.75');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6872','5','Pc üzerinden giriş yaptı','2025-10-23 06:59:48','151.135.16.29');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6873','8','Mobil üzerinden giriş yaptı','2025-10-23 07:59:29','31.143.25.8');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6874','8','Mobil üzerinden giriş yaptı','2025-10-23 07:59:29','31.143.25.8');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6875','101','Mobil üzerinden giriş yaptı','2025-10-23 08:52:59','5.47.145.78');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6876','101','Mobil üzerinden giriş yaptı','2025-10-23 08:52:59','5.47.145.78');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6877','6','Mobil üzerinden giriş yaptı','2025-10-23 09:17:12','46.104.54.63');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6878','13','Mobil üzerinden giriş yaptı','2025-10-23 09:38:14','88.230.84.146');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6879','6','Mobil üzerinden giriş yaptı','2025-10-23 09:51:15','46.104.54.63');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6880','8','Mobil üzerinden giriş yaptı','2025-10-23 10:07:18','88.230.87.183');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6881','8','Mobil üzerinden giriş yaptı','2025-10-23 10:07:18','88.230.87.183');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6882','2','Mobil üzerinden çıkış yaptı','2025-10-23 10:29:50','5.47.159.131');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6883','5','Pc üzerinden giriş yaptı','2025-10-23 10:54:27','151.135.16.29');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6884','11','Pc üzerinden giriş yaptı','2025-10-23 11:25:11','88.255.171.86');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6885','8','Mobil üzerinden giriş yaptı','2025-10-23 13:54:59','31.143.25.8');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6886','8','Mobil üzerinden giriş yaptı','2025-10-23 13:55:00','31.143.25.8');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6887','5','Pc üzerinden giriş yaptı','2025-10-23 13:58:46','151.135.16.29');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6888','6','Pc üzerinden giriş yaptı','2025-10-23 14:43:23','88.255.171.83');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6889','2','Mobil üzerinden giriş yaptı','2025-10-23 15:00:33','5.47.159.131');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6890','104','Pc üzerinden giriş yaptı','2025-10-23 16:09:10','88.230.169.33');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6891','13','Mobil üzerinden giriş yaptı','2025-10-23 16:12:43','88.230.84.146');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6892','104','Pc üzerinden giriş yaptı','2025-10-23 16:20:05','88.230.169.33');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6893','5','Pc üzerinden giriş yaptı','2025-10-23 17:03:37','151.135.16.29');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6894','19','Mobil üzerinden giriş yaptı','2025-10-23 17:19:42','176.54.4.23');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6895','6','Mobil üzerinden giriş yaptı','2025-10-23 17:23:41','46.104.54.63');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6896','8','Mobil üzerinden giriş yaptı','2025-10-23 17:23:54','88.230.87.183');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6897','8','Mobil üzerinden giriş yaptı','2025-10-23 17:23:55','88.230.87.183');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6898','13','Mobil üzerinden giriş yaptı','2025-10-23 22:43:27','88.230.84.146');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6899','5','Pc üzerinden giriş yaptı','2025-10-24 06:53:24','5.47.132.55');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6900','13','Mobil üzerinden giriş yaptı','2025-10-24 07:07:50','151.135.27.254');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6901','8','Mobil üzerinden giriş yaptı','2025-10-24 07:29:35','88.230.87.183');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6902','8','Mobil üzerinden giriş yaptı','2025-10-24 07:29:36','88.230.87.183');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6903','6','Mobil üzerinden giriş yaptı','2025-10-24 08:26:00','46.104.54.63');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6904','101','Mobil üzerinden giriş yaptı','2025-10-24 09:54:42','5.47.200.120');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6905','6','Pc üzerinden giriş yaptı','2025-10-24 14:08:43','88.255.171.84');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6906','5','Pc üzerinden giriş yaptı','2025-10-24 20:26:27','5.47.132.55');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6907','8','Mobil üzerinden giriş yaptı','2025-10-24 21:20:05','88.230.176.7');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6908','8','Mobil üzerinden giriş yaptı','2025-10-24 21:20:05','88.230.176.7');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6909','8','Mobil üzerinden giriş yaptı','2025-10-25 07:17:26','88.230.176.7');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6910','8','Mobil üzerinden giriş yaptı','2025-10-25 07:17:27','88.230.176.7');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6911','13','Mobil üzerinden giriş yaptı','2025-10-25 10:11:25','46.104.3.125');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6912','8','Mobil üzerinden giriş yaptı','2025-10-25 10:32:12','31.143.25.8');
-INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6913','8','Mobil üzerinden giriş yaptı','2025-10-25 10:32:13','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6916','8','Mobil üzerinden giriş yaptı','2025-10-26 10:12:57','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6917','8','Mobil üzerinden giriş yaptı','2025-10-26 10:12:58','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6918','5','Pc üzerinden giriş yaptı','2025-10-26 10:50:30','5.47.132.55');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6919','8','Mobil üzerinden giriş yaptı','2025-10-26 11:18:13','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6920','8','Mobil üzerinden giriş yaptı','2025-10-26 11:18:14','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6921','13','Mobil üzerinden giriş yaptı','2025-10-26 11:37:06','46.104.8.144');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6922','104','Pc üzerinden giriş yaptı','2025-10-26 12:16:18','95.70.249.246');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6923','104','Pc üzerinden giriş yaptı','2025-10-26 12:59:32','95.70.249.246');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6924','5','Pc üzerinden giriş yaptı','2025-10-26 13:05:20','5.47.132.55');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6925','6','Mobil üzerinden giriş yaptı','2025-10-26 13:53:55','151.135.3.190');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6926','13','Mobil üzerinden giriş yaptı','2025-10-26 15:59:35','5.47.156.98');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6927','101','Mobil üzerinden giriş yaptı','2025-10-26 16:40:00','46.104.57.132');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6928','5','Pc üzerinden giriş yaptı','2025-10-26 16:51:02','5.47.132.55');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6929','8','Mobil üzerinden giriş yaptı','2025-10-26 19:49:02','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6930','8','Mobil üzerinden giriş yaptı','2025-10-26 19:49:03','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6931','5','Pc üzerinden giriş yaptı','2025-10-27 06:55:14','5.47.132.55');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6932','8','Mobil üzerinden giriş yaptı','2025-10-27 09:06:47','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6933','8','Mobil üzerinden giriş yaptı','2025-10-27 09:06:48','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6934','6','Pc üzerinden giriş yaptı','2025-10-27 09:55:28','88.255.171.84');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6935','101','Mobil üzerinden giriş yaptı','2025-10-27 11:46:04','5.47.148.196');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6936','101','Mobil üzerinden giriş yaptı','2025-10-27 11:46:05','5.47.148.196');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6937','5','Pc üzerinden giriş yaptı','2025-10-27 16:01:42','5.47.132.55');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6938','6','Pc üzerinden giriş yaptı','2025-10-27 17:21:37','88.255.171.84');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6939','13','Mobil üzerinden giriş yaptı','2025-10-27 19:15:07','88.230.84.146');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6940','5','Pc üzerinden giriş yaptı','2025-10-27 19:30:47','5.47.132.55');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6941','8','Mobil üzerinden giriş yaptı','2025-10-27 20:57:42','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6942','8','Mobil üzerinden giriş yaptı','2025-10-27 20:57:42','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6943','101','Mobil üzerinden giriş yaptı','2025-10-28 09:34:30','5.47.204.3');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6944','5','Pc üzerinden giriş yaptı','2025-10-28 09:38:24','151.135.30.64');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6945','6','Pc üzerinden giriş yaptı','2025-10-28 09:56:02','88.255.171.83');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6946','8','Mobil üzerinden giriş yaptı','2025-10-28 11:10:48','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6947','8','Mobil üzerinden giriş yaptı','2025-10-28 11:10:48','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6948','5','Pc üzerinden giriş yaptı','2025-10-28 13:30:26','151.135.30.64');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6949','101','Mobil üzerinden giriş yaptı','2025-10-28 13:38:17','5.47.204.3');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6950','13','Mobil üzerinden giriş yaptı','2025-10-28 16:36:51','94.235.112.88');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6951','8','Mobil üzerinden giriş yaptı','2025-10-29 08:05:23','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6952','8','Mobil üzerinden giriş yaptı','2025-10-29 08:05:24','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6953','13','Mobil üzerinden giriş yaptı','2025-10-29 10:25:23','176.220.204.244');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6954','5','Pc üzerinden giriş yaptı','2025-10-29 11:53:07','151.135.10.135');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6955','5','Pc üzerinden giriş yaptı','2025-10-29 18:26:22','151.135.10.135');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6956','8','Mobil üzerinden giriş yaptı','2025-10-29 18:49:44','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6957','8','Mobil üzerinden giriş yaptı','2025-10-29 18:49:45','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6958','101','Mobil üzerinden giriş yaptı','2025-10-29 20:51:35','46.104.11.59');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6959','13','Mobil üzerinden giriş yaptı','2025-10-29 23:11:52','88.230.84.146');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6960','5','Pc üzerinden giriş yaptı','2025-10-30 07:03:21','151.135.10.135');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6961','8','Mobil üzerinden giriş yaptı','2025-10-30 07:29:04','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6962','8','Mobil üzerinden giriş yaptı','2025-10-30 07:29:05','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6963','13','Mobil üzerinden giriş yaptı','2025-10-30 11:34:17','88.230.84.146');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6964','6','Mobil üzerinden giriş yaptı','2025-10-30 12:44:48','151.135.142.58');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6965','8','Mobil üzerinden giriş yaptı','2025-10-30 13:43:04','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6966','8','Mobil üzerinden giriş yaptı','2025-10-30 13:43:04','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6967','101','Mobil üzerinden giriş yaptı','2025-10-30 15:49:01','46.104.16.49');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6968','101','Mobil üzerinden giriş yaptı','2025-10-30 15:49:03','46.104.16.49');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6969','5','Pc üzerinden giriş yaptı','2025-10-31 07:54:24','5.47.151.85');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6970','8','Mobil üzerinden giriş yaptı','2025-10-31 08:26:14','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6971','8','Mobil üzerinden giriş yaptı','2025-10-31 08:26:15','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6972','101','Mobil üzerinden giriş yaptı','2025-10-31 08:48:19','5.47.132.115');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6973','101','Mobil üzerinden giriş yaptı','2025-10-31 08:48:21','5.47.132.115');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6974','6','Pc üzerinden giriş yaptı','2025-10-31 08:59:00','88.255.171.86');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6975','101','Mobil üzerinden giriş yaptı','2025-10-31 13:17:52','5.47.133.32');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6976','101','Mobil üzerinden giriş yaptı','2025-10-31 13:17:53','5.47.133.32');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6977','8','Mobil üzerinden giriş yaptı','2025-10-31 13:29:52','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6978','8','Mobil üzerinden giriş yaptı','2025-10-31 13:29:53','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6979','6','Mobil üzerinden giriş yaptı','2025-10-31 14:33:13','151.135.129.154');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6980','6','Pc üzerinden giriş yaptı','2025-10-31 15:16:01','88.255.171.86');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6981','13','Mobil üzerinden giriş yaptı','2025-10-31 16:12:27','46.104.61.50');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6982','8','Mobil üzerinden giriş yaptı','2025-10-31 16:27:44','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6983','8','Mobil üzerinden giriş yaptı','2025-10-31 16:27:44','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6984','101','Mobil üzerinden giriş yaptı','2025-10-31 17:13:05','5.47.133.32');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6985','8','Mobil üzerinden giriş yaptı','2025-11-01 10:13:08','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6986','8','Mobil üzerinden giriş yaptı','2025-11-01 10:13:08','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6987','5','Pc üzerinden giriş yaptı','2025-11-01 12:17:43','46.104.11.49');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6988','8','Mobil üzerinden giriş yaptı','2025-11-01 13:02:21','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6989','8','Mobil üzerinden giriş yaptı','2025-11-01 13:02:22','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6990','13','Mobil üzerinden giriş yaptı','2025-11-01 13:55:59','151.135.28.24');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6991','5','Pc üzerinden giriş yaptı','2025-11-01 19:21:22','46.104.11.49');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6992','101','Mobil üzerinden giriş yaptı','2025-11-01 22:14:08','5.47.198.165');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6993','5','Pc üzerinden giriş yaptı','2025-11-02 01:16:07','46.104.11.49');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6994','5','Pc üzerinden giriş yaptı','2025-11-02 09:48:37','46.104.11.49');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6995','8','Mobil üzerinden giriş yaptı','2025-11-02 09:53:16','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6996','8','Mobil üzerinden giriş yaptı','2025-11-02 09:53:17','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6997','5','Pc üzerinden giriş yaptı','2025-11-02 12:28:42','46.104.11.49');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6998','2','Mobil üzerinden çıkış yaptı','2025-11-02 12:53:22','151.135.7.186');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('6999','2','Mobil üzerinden giriş yaptı','2025-11-02 12:53:24','151.135.7.186');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('7000','8','Mobil üzerinden giriş yaptı','2025-11-02 13:18:34','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('7001','8','Mobil üzerinden giriş yaptı','2025-11-02 13:18:35','88.230.176.7');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('7002','13','Mobil üzerinden giriş yaptı','2025-11-02 22:07:24','88.230.84.146');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('7003','8','Mobil üzerinden giriş yaptı','2025-11-03 08:19:50','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('7004','8','Mobil üzerinden giriş yaptı','2025-11-03 08:19:51','31.143.25.8');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('7005','7','Mobil üzerinden giriş yaptı','2025-11-03 08:31:33','176.54.5.39');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('7006','7','Mobil üzerinden giriş yaptı','2025-11-03 08:31:34','176.54.5.39');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('7007','6','Mobil üzerinden giriş yaptı','2025-11-03 08:38:26','151.135.129.154');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('7008','101','Mobil üzerinden giriş yaptı','2025-11-03 08:38:30','151.135.4.124');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('7009','5','Pc üzerinden giriş yaptı','2025-11-03 08:42:34','46.104.7.111');
+INSERT INTO log (`id`,`soforid`,`islem`,`tarih`,`ip`) VALUES ('7010','104','Pc üzerinden giriş yaptı','2025-11-03 09:19:18','88.230.169.33');
 CREATE TABLE `malzeme` (
   `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `soforid` int(11) NOT NULL,
@@ -2622,7 +2651,7 @@ CREATE TABLE `mesai` (
   `durum` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `soforid` (`soforid`)
-) ENGINE=InnoDB AUTO_INCREMENT=800 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=807 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 INSERT INTO mesai (`id`,`soforid`,`bstarih`,`bttarih`,`mesai`,`aracid`,`gorev`,`pazargunu`,`durum`) VALUES ('7','1','2022-01-01 23:30:00','2022-12-31 00:00:00','512','5','2023 için kalan (Yillik 270 saat düşüldü.)','0','0');
 INSERT INTO mesai (`id`,`soforid`,`bstarih`,`bttarih`,`mesai`,`aracid`,`gorev`,`pazargunu`,`durum`) VALUES ('8','2','2022-12-20 17:30:00','2022-12-20 22:00:00','5','32','Geyve yurdu yeşilay','0','0');
 INSERT INTO mesai (`id`,`soforid`,`bstarih`,`bttarih`,`mesai`,`aracid`,`gorev`,`pazargunu`,`durum`) VALUES ('11','13','2023-01-04 17:00:00','2023-01-04 22:30:00','5','1','Futbol turnuvası ','0','0');
@@ -3316,6 +3345,13 @@ INSERT INTO mesai (`id`,`soforid`,`bstarih`,`bttarih`,`mesai`,`aracid`,`gorev`,`
 INSERT INTO mesai (`id`,`soforid`,`bstarih`,`bttarih`,`mesai`,`aracid`,`gorev`,`pazargunu`,`durum`) VALUES ('797','13','2025-09-16 04:30:00','2025-09-17 19:30:00','4','43','SERDİVAN GM Çanakkale ','0','');
 INSERT INTO mesai (`id`,`soforid`,`bstarih`,`bttarih`,`mesai`,`aracid`,`gorev`,`pazargunu`,`durum`) VALUES ('798','2','2025-09-28 09:30:00','2025-09-28 17:30:00','16','55','Psikolog kaan akyazı yurduna götürüldü','1','');
 INSERT INTO mesai (`id`,`soforid`,`bstarih`,`bttarih`,`mesai`,`aracid`,`gorev`,`pazargunu`,`durum`) VALUES ('799','13','2025-10-08 04:00:00','2025-10-09 23:45:00','4','43','PAMUKOVA GM Çanakkale ','0','');
+INSERT INTO mesai (`id`,`soforid`,`bstarih`,`bttarih`,`mesai`,`aracid`,`gorev`,`pazargunu`,`durum`) VALUES ('800','17','2025-10-27 10:00:00','2025-10-27 19:30:00','2','5','Müfettişler Sapanca Yurdundan Sezginler Otele Getirildi (Salman&Ahmet Bey)','0','');
+INSERT INTO mesai (`id`,`soforid`,`bstarih`,`bttarih`,`mesai`,`aracid`,`gorev`,`pazargunu`,`durum`) VALUES ('801','17','2025-10-28 08:30:00','2025-10-28 19:45:00','21','5','Müfettişler Sapanca Yurduna Götürüldü (29Ekim Öncesi)','1','');
+INSERT INTO mesai (`id`,`soforid`,`bstarih`,`bttarih`,`mesai`,`aracid`,`gorev`,`pazargunu`,`durum`) VALUES ('802','17','2025-10-29 09:30:00','2025-10-29 15:30:00','18','5','Müfettişler Sapanca Yurdu - Sezginler Otele Götürüldü','1','');
+INSERT INTO mesai (`id`,`soforid`,`bstarih`,`bttarih`,`mesai`,`aracid`,`gorev`,`pazargunu`,`durum`) VALUES ('803','13','2025-10-28 04:00:00','2025-10-29 21:30:00','13','43','Adapazarı g.m Çanakkale ','1','');
+INSERT INTO mesai (`id`,`soforid`,`bstarih`,`bttarih`,`mesai`,`aracid`,`gorev`,`pazargunu`,`durum`) VALUES ('804','13','2025-10-28 04:00:00','2025-10-29 21:30:00','13','43','Adapazarı g.m Çanakkale ','1','');
+INSERT INTO mesai (`id`,`soforid`,`bstarih`,`bttarih`,`mesai`,`aracid`,`gorev`,`pazargunu`,`durum`) VALUES ('805','17','2025-10-30 08:30:00','2025-10-30 19:30:00','2','5','Müfettişler Sapanca Yurduna Götürüldü ','0','');
+INSERT INTO mesai (`id`,`soforid`,`bstarih`,`bttarih`,`mesai`,`aracid`,`gorev`,`pazargunu`,`durum`) VALUES ('806','13','2025-11-01 07:30:00','2025-11-01 21:30:00','12','43','AKYAZI GM Eskişehir ','0','');
 CREATE TABLE `sofor` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `adsoyad` varchar(255) NOT NULL,
