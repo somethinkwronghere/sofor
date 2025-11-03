@@ -11,7 +11,21 @@ SECRET_KEY = os.environ.get('SECRET_KEY', SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
+_allowed_hosts_env = os.environ.get('ALLOWED_HOSTS', '').strip()
+_render_hostname = os.environ.get('RENDER_EXTERNAL_HOSTNAME', '').strip()
+
+if _allowed_hosts_env:
+    ALLOWED_HOSTS = [h.strip() for h in _allowed_hosts_env.split(',') if h.strip()]
+else:
+    ALLOWED_HOSTS = ['.onrender.com']
+    if _render_hostname:
+        ALLOWED_HOSTS.append(_render_hostname)
+
+# CSRF trusted origins for Render (required when using HTTPS)
+if _allowed_hosts_env or _render_hostname:
+    CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
+    if _render_hostname:
+        CSRF_TRUSTED_ORIGINS.append(f"https://{_render_hostname}")
 
 # Security settings
 SECURE_SSL_REDIRECT = True
